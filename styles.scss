@@ -156,11 +156,12 @@ body {
 
         form {
             padding: 1rem 5rem;
-
+            width: 30rem;
+            height: 30rem;
+            position: relative;
             section {
                 display: flex;
                 flex-direction: column;
-
                 h1 {
                     padding-top: 1em;
                     font-size: 2rem;
@@ -206,6 +207,7 @@ body {
 
 .card {
     padding: 1rem;
+    width: 9rem;
     padding-top: 5rem;
     padding-right: 2rem;
     border-radius: 0.5rem;
@@ -229,41 +231,54 @@ body {
     }
 
     &:nth-of-type(1) {
-        background: url(./assets/images/icon-arcade.svg) 10% 10% no-repeat;
+        background: url(./assets/images/icon-arcade.svg) 1rem 1rem no-repeat;
     }
 
     &:nth-of-type(2) {
-        background: url(./assets/images/icon-advanced.svg) 10% 10% no-repeat;
+        background: url(./assets/images/icon-advanced.svg) 1rem 1rem no-repeat;
     }
 
     &:nth-of-type(3) {
-        background: url(./assets/images/icon-pro.svg) 10% 10% no-repeat;
+        background: url(./assets/images/icon-pro.svg) 1rem 1rem no-repeat;
     }
 }
 
 .flex-row {
+    margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1rem;
 }
 
 #month-year {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    margin: 3rem auto;
+    width: fit-content;
     gap: 2rem;
 
     span {
         width: fit-content;
+        font-weight: bold;
+        transition: 0.2s;
+        grid-column: 1 / 2;
+        &#year {
+            color: var(--clr5);
+            grid-column: 3 / 4;
+        }
     }
 
-    input {
+    #month-year-check {
         width: fit-content;
         position: relative;
         visibility: hidden;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
         &:checked {
             & ~ #month {
-                color: var(--clr4);
+                color: var(--clr5);
+            }
+            & ~ #year {
+                color: var(--clr10);
             }
             &::after {
                 left: 100% !important;
@@ -303,19 +318,28 @@ body {
     background-color: transparent;
     border: none;
     color: var(--clr5);
-
+    right: auto;
+    left: 1rem;
+    bottom: 1rem;
     &:hover {
         color: var(--clr10);
         background: transparent;
     }
 }
 
+.bonus {
+    color: var(--clr10);
+    font-size: 0.9rem;
+}
+
 .btn {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
     width: fit-content;
     padding: 0.75rem 1rem;
     font-weight: bold;
     font-size: 1rem;
-    margin-top: 3em;
     margin-left: auto;
     margin-right: 0;
     border-radius: 0.5rem;
@@ -331,4 +355,10 @@ body {
 
 form>section:not(:nth-of-type(1)) {
     display: none;
+}
+
+#step-3 {
+    label {
+        
+    }
 }

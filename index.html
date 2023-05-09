@@ -72,30 +72,27 @@
           <label class="card">
             <input type="radio" name="plan" id="pr_1" checked>
             <h4>Arcade</h4>
-            <p>$9/mo</p>
+            <p class="price">$9/mo</p>
           </label>
           <label class="card">
             <input type="radio" name="plan" id="pr_2">
             <h4>Advanced</h4>
-            <p>$12/mo</p>
+            <p class="price">$12/mo</p>
           </label>
           <label class="card">
             <input type="radio" name="plan" id="pr_3">
             <h4>Pro</h4>
-            <p>$15/mo</p>
+            <p class="price">$15/mo</p>
           </label>
         </div>
 
         <label id="month-year">
-          <span id="month">Monthly</span>
           <input id="month-year-check" type="checkbox" name="month-year">
+          <span id="month">Monthly</span>
           <span id="year">Yearly</span>
         </label>
-
-        <div class="flex-row">
           <input class="back btn" type="button" value="Go Back">
           <input class="next btn" type="button" value="Next Step">
-        </div>
       </section>
       <!-- Step 2 end -->
 
@@ -104,20 +101,29 @@
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
 
-        Online service
-        Access to multiplayer games
-        +$1/mo
+        <label>
+          <input type="checkbox">
+          <h4>Online service</h4>
+        <p>Access to multiplayer games</p>
+        <p class="price">+$1/mo</p>
+        </label>
 
-        Larger storage
-        Extra 1TB of cloud save
-        +$2/mo
+        <label>
+          <input type="checkbox">
+          <h4>Larger storage</h4>
+        <p>Extra 1TB of cloud save</p>
+        <p class="price">+$2/mo</p>
+        </label>
 
-        Customizable Profile
-        Custom theme on your profile
-        +$2/mo
+        <label>
+          <input type="checkbox">
+          <h4>Customizable Profile</h4>
+        <p>Custom theme on your profile</p>
+        <p class="price">+$2/mo</p>
+        </label>
 
-        Go Back
-        Next Step
+        <input type="button" class="btn back" value="Go Back">
+        <input type="button" class="btn next" value="Next Step">
       </section>
       <!-- Step 3 end -->
 

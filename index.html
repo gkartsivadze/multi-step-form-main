@@ -1,151 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
   <title>Frontend Mentor | Multi-step form</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-
 <body>
 
-  <main>
-    <!-- Sidebar start -->
-    <div id="sidebar">
-      <label>
-        <input type="radio">
-        <p class="step">Step 1</p>
-        <p class="title">Your info</p>
-      </label>
-      <label>
-        <input type="radio">
-        <p class="step">Step 2</p>
-        <p class="title">Select plan</p>
-      </label>
-      <label>
-        <input type="radio">
-        <p class="step">Step 3</p>
-        <p class="title">Add-ons</p>
-      </label>
-      <label>
-        <input type="radio">
-        <p class="step">Step 4</p>
-        <p class="title">Summary</p>
-    </div>
-    </label>
-    <!-- Sidebar end -->
-    <section id="reg-side">
-      <!-- Step 1 start -->
-      <form>
-        <h1>Personal info</h1>
-        <p>Please provide your name, email address, and phone number.</p>
+  <!-- Sidebar start -->
 
-        <label>
-          <p>Name</p>
-          <input type="text" placeholder="e.g. Stephen King">
-        </label>
+  Step 1
+  Your info
 
-        <label>
-          <p>Email Address</p>
-          <input type="text" placeholder="e.g. stephenking@lorem.com">
-        </label>
+  Step 2
+  Select plan
 
-        <label>
-          <p>Phone Number</p>
-          <input type="text" placeholder="e.g. +1 234 567 890">
-        </label>
-        <input type="sumit" value="Next Step">
-      </form>
-      <!-- Step 1 end -->
+  Step 3
+  Add-ons
 
-      <!-- Step 2 start -->
+  Step 4
+  Summary
 
-      Select your plan
-      You have the option of monthly or yearly billing.
+  <!-- Sidebar end -->
 
-      Arcade
-      $9/mo
+  <!-- Step 1 start -->
 
-      Advanced
-      $12/mo
+  Personal info
+  Please provide your name, email address, and phone number.
 
-      Pro
-      $15/mo
+  Name
+  e.g. Stephen King
 
-      Monthly
-      Yearly
+  Email Address
+  e.g. stephenking@lorem.com
 
-      Go Back
-      Next Step
+  Phone Number
+  e.g. +1 234 567 890
 
-      <!-- Step 2 end -->
+  Next Step
 
-      <!-- Step 3 start -->
+  <!-- Step 1 end -->
 
-      Pick add-ons
-      Add-ons help enhance your gaming experience.
+  <!-- Step 2 start -->
 
-      Online service
-      Access to multiplayer games
-      +$1/mo
+  Select your plan
+  You have the option of monthly or yearly billing.
 
-      Larger storage
-      Extra 1TB of cloud save
-      +$2/mo
+  Arcade
+  $9/mo
 
-      Customizable Profile
-      Custom theme on your profile
-      +$2/mo
+  Advanced
+  $12/mo
 
-      Go Back
-      Next Step
+  Pro
+  $15/mo
 
-      <!-- Step 3 end -->
+  Monthly
+  Yearly
 
-      <!-- Step 4 start -->
+  Go Back
+  Next Step
 
-      Finishing up
-      Double-check everything looks OK before confirming.
+  <!-- Step 2 end -->
 
-      <!-- Dynamically add subscription and add-on selections here -->
+  <!-- Step 3 start -->
 
-      Total (per month/year)
+  Pick add-ons
+  Add-ons help enhance your gaming experience.
 
-      Go Back
-      Confirm
+  Online service
+  Access to multiplayer games
+  +$1/mo
 
-      <!-- Step 4 end -->
+  Larger storage
+  Extra 1TB of cloud save
+  +$2/mo
 
-      <!-- Step 5 start -->
+  Customizable Profile
+  Custom theme on your profile
+  +$2/mo
 
-      Thank you!
+  Go Back
+  Next Step
 
-      Thanks for confirming your subscription! We hope you have fun
-      using our platform. If you ever need support, please feel free
-      to email us at support@loremgaming.com.
-    </section>
-    <!-- Step 5 end -->
-  </main>
+  <!-- Step 3 end -->
+
+  <!-- Step 4 start -->
+
+  Finishing up
+  Double-check everything looks OK before confirming.
+
+  <!-- Dynamically add subscription and add-on selections here -->
+
+  Total (per month/year)
+
+  Go Back
+  Confirm
+
+  <!-- Step 4 end -->
+
+  <!-- Step 5 start -->
+
+  Thank you!
+
+  Thanks for confirming your subscription! We hope you have fun 
+  using our platform. If you ever need support, please feel free 
+  to email us at support@loremgaming.com.
+
+  <!-- Step 5 end -->
+  
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
 </body>
-
 </html>

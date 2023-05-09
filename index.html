@@ -41,7 +41,7 @@
     </section>
     <!-- Sidebar end -->
 
-    <form>
+    <form method="GET" action="./done.html">
       <!-- Step 1 start -->
       <section id="step-1" class="sub-cont">
         <h1>Personal info</h1>
@@ -49,18 +49,18 @@
 
         <label>
           Name
-          <input name="name" type="text" placeholder="e.g. Stephen King">
+          <input id="name" name="name" type="text" placeholder="e.g. Stephen King" required minlength="5">
         </label>
         <label>
           Email Address
-          <input name="mail" type="text" placeholder="e.g. stephenking@lorem.com">
+          <input id="mail" name="mail" type="mail" placeholder="e.g. stephenking@lorem.com" required minlength="5">
         </label>
         <label>
           Phone Number
-          <input name="number" type="number" placeholder="e.g. +1 234 567 890">
+          <input id="number" name="number" type="tel" placeholder="e.g. +1 234 567 890" required minlength="9">
         </label>
 
-        <input id="btn_1" class="btn" type="button" value="Next Step">
+        <input id="btn_1" class="btn next" type="button" value="Next Step">
       </section>
       <!-- Step 1 end -->
 
@@ -68,19 +68,19 @@
       <section id="step-2" class="sub-cont">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
-        <div class="flex-row">
+        <div id="plan-list">
           <label class="card">
-            <input type="radio" name="plan" id="pr_1" checked>
+            <input type="radio" name="plan" value="Arcade" checked>
             <h4>Arcade</h4>
             <p class="price">$9/mo</p>
           </label>
           <label class="card">
-            <input type="radio" name="plan" id="pr_2">
+            <input type="radio" name="plan" value="Advanced">
             <h4>Advanced</h4>
             <p class="price">$12/mo</p>
           </label>
           <label class="card">
-            <input type="radio" name="plan" id="pr_3">
+            <input type="radio" name="plan" value="Pro">
             <h4>Pro</h4>
             <p class="price">$15/mo</p>
           </label>
@@ -102,24 +102,24 @@
         <p>Add-ons help enhance your gaming experience.</p>
 
         <label>
-          <input type="checkbox">
+          <input value="Online service" type="checkbox">
           <h4>Online service</h4>
-        <p>Access to multiplayer games</p>
-        <p class="price">+$1/mo</p>
+        <p class="title">Access to multiplayer games</p>
+        <p class="add-on-price">+$1/mo</p>
         </label>
 
         <label>
-          <input type="checkbox">
+          <input value="Larger storage" type="checkbox">
           <h4>Larger storage</h4>
-        <p>Extra 1TB of cloud save</p>
-        <p class="price">+$2/mo</p>
+        <p class="title">Extra 1TB of cloud save</p>
+        <p class="add-on-price">+$2/mo</p>
         </label>
 
         <label>
-          <input type="checkbox">
+          <input value="Customizable Profile" type="checkbox">
           <h4>Customizable Profile</h4>
-        <p>Custom theme on your profile</p>
-        <p class="price">+$2/mo</p>
+        <p class="title">Custom theme on your profile</p>
+        <p class="add-on-price">+$2/mo</p>
         </label>
 
         <input type="button" class="btn back" value="Go Back">
@@ -133,16 +133,25 @@
         <p>Double-check everything looks OK before confirming.</p>
 
         <!-- Dynamically add subscription and add-on selections here -->
-
-        Total (per month/year)
-
-        Go Back
-        Confirm
+        <div id="plan-cont">
+          <span id="plan-n-p">Arcade (Monthly)</span>
+          <a id="plan-change" href="#">Change</a>
+          <span id="plan-price">15$</span>
+        </div>
+        <div id="add-on-prices">
+          <div>
+            <p>Daram</p>
+            <p>+$1/mo</p>
+          </div>
+        </div>
+        <div id="summary">Total (per month/year) <p id="sum">15$</p></div>
+        <input type="button" class="btn back" value="Go Back">
+        <button id="form-submit" type="submit" class="btn confirm">Confirm</button>
       </section>
       <!-- Step 4 end -->
 
       <!-- Step 5 start -->
-      <section id="step-2">
+      <section id="step-5">
         Thank you!
 
         Thanks for confirming your subscription! We hope you have fun

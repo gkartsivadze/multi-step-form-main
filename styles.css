@@ -43,7 +43,10 @@
   color: hsl(228, 45%, 44%);
 }
 
-html, input, *::after, *::before {
+html,
+input,
+*::after,
+*::before {
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -121,14 +124,14 @@ body main #sidebar label p {
   grid-row: 1/2;
   grid-column: 2/3;
 }
-body main #sidebar label h2 {
+body main #sidebar label h3 {
   text-transform: uppercase;
   color: var(--clr2);
   grid-row: 2/3;
   grid-column: 2/3;
 }
 body main form {
-  padding: 1rem 4rem;
+  padding: 1rem 5rem;
 }
 body main form section {
   display: flex;
@@ -144,19 +147,22 @@ body main form section p {
   color: var(--clr5);
 }
 body main form section label {
+  position: relative;
   display: block;
   margin-top: 1.25rem;
   font-size: 1rem;
+  font-weight: 500;
   color: var(--clr10);
 }
 body main form section label input {
   box-sizing: border-box;
   display: block;
   margin-top: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   width: 100%;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 1rem;
   border: 1px solid var(--clr5);
   color: var(--clr10);
 }
@@ -164,10 +170,106 @@ body main form section label input:focus {
   outline: none;
   border: 1px solid var(--clr10);
 }
-body main form section input[type=button] {
+
+.card {
+  padding: 1rem;
+  padding-top: 5rem;
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--clr5);
+  position: relative;
+  cursor: pointer;
+}
+.card input[type=radio] {
+  visibility: hidden;
+}
+.card input[type=radio]:checked::after {
+  visibility: visible;
+  opacity: 1;
+  content: "";
+  border: 1px solid var(--clr8);
+  border-radius: 0.5rem;
+  position: absolute;
+  inset: 0;
+}
+.card:nth-of-type(1) {
+  background: url(./assets/images/icon-arcade.svg) 10% 10% no-repeat;
+}
+.card:nth-of-type(2) {
+  background: url(./assets/images/icon-advanced.svg) 10% 10% no-repeat;
+}
+.card:nth-of-type(3) {
+  background: url(./assets/images/icon-pro.svg) 10% 10% no-repeat;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#month-year {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+#month-year span {
   width: -moz-fit-content;
   width: fit-content;
-  padding: 1rem;
+}
+#month-year input {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  visibility: hidden;
+}
+#month-year input:checked ~ #month {
+  color: var(--clr4);
+}
+#month-year input:checked::after {
+  left: 100% !important;
+}
+#month-year #month-year-check::before {
+  visibility: visible;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  background-color: var(--clr10);
+}
+#month-year #month-year-check::after {
+  visibility: visible;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2rem;
+  background-color: var(--clr1);
+  transition: 0.2s;
+}
+
+.btn.back {
+  background-color: transparent;
+  border: none;
+  color: var(--clr5);
+}
+.btn.back:hover {
+  color: var(--clr10);
+  background: transparent;
+}
+
+.btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.75rem 1rem;
   font-weight: bold;
   font-size: 1rem;
   margin-top: 3em;
@@ -176,6 +278,11 @@ body main form section input[type=button] {
   border-radius: 0.5rem;
   background-color: var(--clr10);
   color: var(--clr2);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn:hover {
+  background-color: hsl(213, 95%, 30%);
 }
 
 form > section:not(:nth-of-type(1)) {

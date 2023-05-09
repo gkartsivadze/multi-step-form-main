@@ -7,7 +7,8 @@
   <!-- displays site properly based on user's device -->
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Multi-step form</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -18,75 +19,88 @@
     <!-- Sidebar start -->
     <section id="sidebar">
       <label>
-        <input type="radio" name="step" checked>
+        <input id="rad_1" type="radio" name="step" checked>
         <p>Step 1</p>
-        <h2>Your info</h2>
+        <h3>Your info</h3>
       </label>
       <label>
-        <input type="radio" name="step">
+        <input id="rad_2" type="radio" name="step">
         <p>Step 2</p>
-        <h2>Select plan</h2>
+        <h3>Select plan</h3>
       </label>
       <label>
-        <input type="radio" name="step">
+        <input id="rad_3" type="radio" name="step">
         <p>Step 3</p>
-        <h2>Add-ons</h2>
+        <h3>Add-ons</h3>
       </label>
       <label>
-        <input type="radio" name="step">
+        <input id="rad_4" type="radio" name="step">
         <p>Step 4</p>
-        <h2>Summary</h2>
+        <h3>Summary</h3>
       </label>
     </section>
     <!-- Sidebar end -->
 
     <form>
       <!-- Step 1 start -->
-      <section id="step-1">
+      <section id="step-1" class="sub-cont">
         <h1>Personal info</h1>
         <p>Please provide your name, email address, and phone number.</p>
 
         <label>
-        Name
-        <input type="text" placeholder="e.g. Stephen King">
+          Name
+          <input name="name" type="text" placeholder="e.g. Stephen King">
         </label>
-    <label>
-        Email Address
-        <input type="text" placeholder="e.g. stephenking@lorem.com">
-      </label>
-      <label>
-        Phone Number
-        <input type="text" placeholder="e.g. +1 234 567 890">
-      </label>
+        <label>
+          Email Address
+          <input name="mail" type="text" placeholder="e.g. stephenking@lorem.com">
+        </label>
+        <label>
+          Phone Number
+          <input name="number" type="number" placeholder="e.g. +1 234 567 890">
+        </label>
 
-        <input type="button" value="Next Step">
+        <input id="btn_1" class="btn" type="button" value="Next Step">
       </section>
       <!-- Step 1 end -->
 
       <!-- Step 2 start -->
-      <section id="step-2">
+      <section id="step-2" class="sub-cont">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
+        <div class="flex-row">
+          <label class="card">
+            <input type="radio" name="plan" id="pr_1" checked>
+            <h4>Arcade</h4>
+            <p>$9/mo</p>
+          </label>
+          <label class="card">
+            <input type="radio" name="plan" id="pr_2">
+            <h4>Advanced</h4>
+            <p>$12/mo</p>
+          </label>
+          <label class="card">
+            <input type="radio" name="plan" id="pr_3">
+            <h4>Pro</h4>
+            <p>$15/mo</p>
+          </label>
+        </div>
 
-        Arcade
-        $9/mo
+        <label id="month-year">
+          <span id="month">Monthly</span>
+          <input id="month-year-check" type="checkbox" name="month-year">
+          <span id="year">Yearly</span>
+        </label>
 
-        Advanced
-        $12/mo
-
-        Pro
-        $15/mo
-
-        Monthly
-        Yearly
-
-        Go Back
-        Next Step
+        <div class="flex-row">
+          <input class="back btn" type="button" value="Go Back">
+          <input class="next btn" type="button" value="Next Step">
+        </div>
       </section>
       <!-- Step 2 end -->
 
       <!-- Step 3 start -->
-      <section id="step-3">
+      <section id="step-3" class="sub-cont">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
 
@@ -108,7 +122,7 @@
       <!-- Step 3 end -->
 
       <!-- Step 4 start -->
-      <section id="step-4">
+      <section id="step-4" class="sub-cont">
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
 

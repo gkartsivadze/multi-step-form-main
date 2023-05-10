@@ -1,3 +1,84 @@
+var curPlan = "arcade";
+var curAddons = [];
+var curPeriod = "month";
+var period = {
+    year : {
+        periodic: "Yearly",
+        long: "Year",
+        short: "ye"
+    },
+    month : {
+        periodic: "Monthly",
+        long: "Month",
+        short: "mo"
+    }
+}
+const plan = {
+    arcade : {
+        name: "Arcade",
+        month: 9,
+        year: 90
+    },
+    advanced : {
+        name: "Advanced",
+        month: 12,
+        year: 120
+    },
+    pro : {
+        name: "Pro",
+        month: 15,
+        year: 150
+    }
+}
+var planPrices = {
+    toYearly : () => {
+        $(".price")[0].innerText = `$${plan.arcade.year}/ye`;
+        $(".price")[1].innerText = `$${plan.advanced.year}/ye`;
+        $(".price")[2].innerText = `$${plan.pro.year}/ye`;
+        $(".add-on-price")[0].innerText = `$${addonsPrice["Online service"].year}/ye`;
+        $(".add-on-price")[1].innerText = `$${addonsPrice["Larger storage"].year}/ye`;
+        $(".add-on-price")[2].innerText = `$${addonsPrice["Customizable Profile"].year}/ye`;
+        $(".card").append("<p class='bonus'>2 months free");
+        curPeriod = "year";
+    },
+    toMonthly : () => {
+        $(".price")[0].innerText = `$${plan.arcade.month}/mo`;
+        $(".price")[1].innerText = `$${plan.advanced.month}/mo`;
+        $(".price")[2].innerText = `$${plan.pro.month}/mo`;
+        $(".add-on-price")[0].innerText = `$${addonsPrice["Online service"].month}/mo`;
+        $(".add-on-price")[1].innerText = `$${addonsPrice["Larger storage"].month}/mo`;
+        $(".add-on-price")[2].innerText = `$${addonsPrice["Customizable Profile"].month}/mo`;
+        $(".bonus").remove();
+        curPeriod = "month";
+    }
+}
+
+$("#plan-change").on("click", function() {
+    step.two();
+})
+
+$("input[name='plan']").on("click", function() {
+    curPlan = this.value;
+    refreshData();
+})
+$("#month-year-check").on("click", function() {
+    if($(this).prop("checked")) {
+        planPrices.toYearly();
+    } else {
+        planPrices.toMonthly();
+    }
+    refreshData();
+})
+
+$("input[name='add-on']").on("click", function () {
+    if($(this).prop("checked") && !curAddons.includes($(this).val())) {
+        curAddons.push($(this).val());
+    } else if(!$(this).prop("checked")) {
+        removeAddOn($(this).val());
+    }
+    refreshData();
+})
+
 const step = {
     one : function() {
         $(".sub-cont").css("display", "none");
@@ -18,24 +99,29 @@ const step = {
         $(".sub-cont").css("display", "none");
         $("#step-4").css("display", "flex");
         $("#rad_4").prop("checked", "true");
-        let per = $("input[name='month-year']").prop("checked") ? "Yearly" : "Monthly";
-        let curPlan = $("input[name='plan']").val();
-        let price = plan[curPlan.toLowerCase()].price;
-        $("#plan-n-p").text(curPlan + " (" + per + ")");
-        $("#plan-price").text("$" + price + "/" + per)
-        let add_ons = 
+    },
+    thanks : function() {
+        $(".sub-cont").css("display", "none");
+        $("#step-5").css("display", "flex");
+        $("#rad_4").prop("checked", "true");
     }
 }
 
-const plan = {
-    arcade : {
-        price: 9
+const addonsPrice = {
+    "Online service" : {
+        name: "Online service",
+        month: 1,
+        year: 12
     },
-    advanced : {
-        price: 12
+    "Larger storage" : {
+        name: "Larger storage",
+        month: 2,
+        year: 12
     },
-    pro : {
-        price: 15
+    "Customizable Profile" : {
+        name: "Customizable Profile",
+        month: 2,
+        year: 24
     }
 }
 
@@ -73,32 +159,39 @@ $("#step-4  .back.btn").on("click", () => {
     $("#rad_3").click();
 })
 
-$("#month-year-check").on("change", function() {
-    bonusSystem(this);
-})
 $("#form-submit").on("click", function() {
     if($("input:invalid").length > 0) {
         $("input:invalid").css("border", "1px solid var(--danger)");
         $("#rad_1").click();
+    } else {
+        step.thanks();
     }
 })
 
-function bonusSystem(elem) {
-    if($(elem).prop("checked") == true) {
-        $(".card").append("<p class='bonus'>2 months free");
-        $(".price").each(function(i, element) {
-            $(element).text("$" + ($(element).text().match(/[0-9]+/) * 10) + "/ye");
-        })
-        $(".add-on-price").each(function(i, element) {
-            $(element).text("+$" + ($(element).text().match(/[0-9]+/) * 12) + "/ye");
-        })
-    } else if ($(elem).prop("checked") == false) {
-        $(".price").each(function(i, element) {
-            $(element).text("$" + ($(element).text().match(/[0-9]+/) / 10) + "/mo");
-        })
-        $(".add-on-price").each(function(i, element) {
-            $(element).text("+$" + ($(element).text().match(/[0-9]+/) * 12) + "/ye");
-        })
-        $(".bonus").remove();
+function refreshData() {
+    $("#plan-n-p").text(plan[curPlan].name + " (" + period[curPeriod].periodic + ")");
+    $("#plan-price").text("$" + plan[curPlan][curPeriod] + "/" + period[curPeriod].short);
+    $("#add-on-prices").html("");
+    curAddons.forEach(elem => {
+        $("#add-on-prices").append(`<div><p>${elem}</p><p>+$${addonsPrice[elem][curPeriod]}/${period[curPeriod].short}`);
+    })
+    // Sum of prices
+    $("#period").text("Total per (" + curPeriod + ")");
+    $("#sum").text("+$" + sumOfAll() + "/" + period[curPeriod].short);
+    
+}
+
+function sumOfAll() {
+    let sumAddOn = 0;
+    curAddons.forEach(elem => {
+        sumAddOn += addonsPrice[elem][curPeriod];
+    })
+    return plan[curPlan][curPeriod] + sumAddOn;
+}
+
+function removeAddOn(item) {
+    let index = curAddons.indexOf(item);
+    if(index !== -1) {
+        curAddons.splice(index, 1);
     }
 }
